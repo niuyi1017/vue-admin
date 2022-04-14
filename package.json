@@ -36,6 +36,15 @@
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2"
   },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-customizable"
