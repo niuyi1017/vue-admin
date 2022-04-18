@@ -7,24 +7,24 @@
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <el-icon>
-            <avatar />
-          </el-icon>
+          <span class="svg-container">
+            <svg-icon icon="user"></svg-icon>
+          </span>
         </span>
         <el-input placeholder="username" name="username" type="text" />
       </el-form-item>
 
       <el-form-item prop="password">
         <span class="svg-container">
-          <el-icon>
-            <avatar />
-          </el-icon>
+          <span class="svg-container">
+            <svg-icon icon="password"></svg-icon>
+          </span>
         </span>
         <el-input placeholder="password" name="password" />
         <span class="show-pwd">
-          <el-icon>
-            <avatar />
-          </el-icon>
+          <span class="svg-container">
+            <svg-icon icon="eye"></svg-icon>
+          </span>
         </span>
       </el-form-item>
 
@@ -37,8 +37,7 @@
 
 <script setup>
 // 导入组件之后无需注册可直接使用
-import { Avatar } from '@element-plus/icons'
-import {} from 'vue'
+import { } from 'vue'
 </script>
 <style lang="stylus" scoped>
 $bg = #2d3a4b;
