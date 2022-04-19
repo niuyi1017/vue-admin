@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form">
+    <el-form class="login-form" :model="loginForm" :rules="loginFormRules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -11,33 +11,58 @@
             <svg-icon icon="user"></svg-icon>
           </span>
         </span>
-        <el-input placeholder="username" name="username" type="text" />
+        <el-input placeholder="username" name="username" type="text" v-model="loginForm.username"/>
       </el-form-item>
 
       <el-form-item prop="password">
-        <span class="svg-container">
+        <span class="svg-container" >
           <span class="svg-container">
             <svg-icon icon="password"></svg-icon>
           </span>
         </span>
-        <el-input placeholder="password" name="password" />
-        <span class="show-pwd">
+        <el-input placeholder="password" name="password" :type="passwordType" v-model="loginForm.password" />
+        <span class="show-pwd" @click="changePasswordType">
           <span class="svg-container">
-            <svg-icon icon="eye"></svg-icon>
+            <svg-icon :icon="passwordType== 'password'? 'eye': 'eye-open'"></svg-icon>
           </span>
         </span>
       </el-form-item>
-
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px"
-        >登录</el-button
-      >
+      <el-button type="primary" style="width: 100%; margin-bottom: 30px">登录</el-button>
     </el-form>
   </div>
 </template>
 
 <script setup>
 // 导入组件之后无需注册可直接使用
-import { } from 'vue'
+import { ref, reactive } from 'vue'
+import { validatePassword } from './validate.js'
+
+const loginForm = ref({
+  username: 'super-admin',
+  password: '123456'
+})
+
+const loginFormRules = ref({
+  username: [{
+    required: true,
+    trigger: 'blur'
+  }],
+  password: [{
+    required: true,
+    trigger: 'blur',
+    validator: validatePassword()
+  }]
+})
+
+const passwordType = ref('password')
+const changePasswordType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
+}
+
 </script>
 <style lang="stylus" scoped>
 $bg = #2d3a4b;
@@ -59,14 +84,14 @@ $cursor = #fff;
     margin: 0 auto;
     overflow: hidden;
 
-    ::v-deep .el-form-item {
+    :deep .el-form-item {
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(0, 0, 0, 0.1);
       border-radius: 5px;
       color: #454545;
     }
 
-    ::v-deep .el-input {
+    :deep .el-input {
       display: inline-block;
       height: 47px;
       width: 85%;

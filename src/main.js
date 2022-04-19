@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import installElementPlus from './plugins/element'
 import './assets/style/reset.css'
-import installSvgIcon from './assets/svg/index.js'
+import installSvgIcon from './assets/icons/index.js'
 
 const app = createApp(App)
 installElementPlus(app)

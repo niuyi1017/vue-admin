@@ -28,7 +28,7 @@ const styleExtrenalIcon = computed(() => ({
   '-webkit-mask': 'url(${props.icon}) no-repeat 50% 50%'`
 }))
 
-const iconName = computed(() => `icon-${props.icon}`)
+const iconName = computed(() => `#icon-${props.icon}`)
 
 </script>
 
