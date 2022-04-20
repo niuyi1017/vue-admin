@@ -1,18 +1,18 @@
 import { login } from '../api/user'
 import md5 from 'md5'
 export default {
-  namespace: true,
+  namespaced: true,
   state: () => ({}),
   mutations: {
 
   },
   actions: {
-    login(context, userInfo) {
-      const { username, passeword } = userInfo
+    Login(context, userInfo) {
+      const { username, password } = userInfo
       return new Promise((resolve, reject) => {
         login({
           username,
-          passeword: md5(passeword)
+          password: md5(password)
         }).then(() => {
           resolve()
         }).catch(err => {

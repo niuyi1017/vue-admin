@@ -5,10 +5,11 @@ export default createStore({
   state: {
   },
   mutations: {
-    user
+
   },
   actions: {
   },
   modules: {
+    user
   }
 })

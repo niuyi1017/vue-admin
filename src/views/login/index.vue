@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" :model="loginForm" :rules="loginFormRules">
+    <el-form class="login-form" :model="loginForm" :rules="loginFormRules" ref="loginFormRef">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -27,14 +27,15 @@
           </span>
         </span>
       </el-form-item>
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px">登录</el-button>
+      <el-button type="primary" style="width: 100%; margin-bottom: 30px" @click="handleLogin">登录</el-button>
     </el-form>
   </div>
 </template>
 
 <script setup>
 // 导入组件之后无需注册可直接使用
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
+import { useStore } from 'vuex'
 import { validatePassword } from './validate.js'
 
 const loginForm = ref({
@@ -61,6 +62,23 @@ const changePasswordType = () => {
   } else {
     passwordType.value = 'password'
   }
+}
+const loading = ref(false)
+const store = useStore()
+const loginFormRef = ref(null)
+
+const handleLogin = () => {
+  loginFormRef.value.validate(valid => {
+    if (!valid) return
+    loading.value = true
+    store.dispatch('user/Login', loginForm.value)
+      .then(res => {
+        console.log(res)
+      }).catch(err => console.log(err))
+      .finally(() => {
+        loading.value = false
+      })
+  })
 }
 
 </script>
