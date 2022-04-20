@@ -36,6 +36,7 @@
 // 导入组件之后无需注册可直接使用
 import { ref } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import { validatePassword } from './validate.js'
 
 const loginForm = ref({
@@ -66,7 +67,7 @@ const changePasswordType = () => {
 const loading = ref(false)
 const store = useStore()
 const loginFormRef = ref(null)
-
+const router = useRouter()
 const handleLogin = () => {
   loginFormRef.value.validate(valid => {
     if (!valid) return
@@ -74,6 +75,7 @@ const handleLogin = () => {
     store.dispatch('user/Login', loginForm.value)
       .then(res => {
         console.log(res)
+        router.push('/')
       }).catch(err => console.log(err))
       .finally(() => {
         loading.value = false
