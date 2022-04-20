@@ -7,6 +7,7 @@ import installElementPlus from './plugins/element'
 import installSvgIcon from './assets/icons/index.js'
 
 import './assets/style/reset.css'
+import './assets/style/index.styl'
 import './utils/router-guards'
 
 const app = createApp(App)
