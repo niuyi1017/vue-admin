@@ -1,9 +1,15 @@
 <template>
-  <div class="side-bar" :style="{background:CssVariables.menuBg }">SideBar</div>
+  <div class="side-bar" :style="{background:CssVariables.menuBg }">
+    <h1>sidebar</h1>
+    <el-scrollbar>
+      <side-bar-menu></side-bar-menu>
+    </el-scrollbar>
+  </div>
 </template>
 <script setup>
 import {} from 'vue'
 import CssVariables from '../../assets/style/index.styl'
+import SideBarMenu from './side-bar/SideBarMenu.vue'
 // console.log(CssVariables)
 </script>
 
