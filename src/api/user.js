@@ -7,6 +7,13 @@ const login = data => {
     method: 'POST'
   })
 }
+const getUserInfo = data => {
+  return request({
+    url: '/sys/profile',
+    method: 'GET'
+  })
+}
 export {
-  login
+  login,
+  getUserInfo
 }

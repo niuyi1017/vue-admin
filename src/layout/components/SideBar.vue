@@ -4,7 +4,7 @@
 <script setup>
 import {} from 'vue'
 import CssVariables from '../../assets/style/index.styl'
-console.log(CssVariables)
+// console.log(CssVariables)
 </script>
 
 <style lang="stylus" scoped>
