@@ -12,7 +12,6 @@ const servece = axios.create({
 servece.interceptors.request.use(config => {
   config.headers.icode = 'A19E62F511F7BB81'
   if (store.getters.token) {
-    console.log(isTokenTimeout())
     if (isTokenTimeout()) {
       store.dispatch('user/logout')
       return Promise.reject(new Error('token 失效,请重新登录'))
