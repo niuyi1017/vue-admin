@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import user from './user'
+import app from './app'
 import CssVariables from '../assets/style/index.styl'
 
 export default createStore({
@@ -9,7 +10,8 @@ export default createStore({
     token: state => state.user.token,
     hasUserInfo: state => JSON.stringify(state.user.userInfo) !== '{}',
     userInfo: state => state.user.userInfo,
-    cssVar: state => CssVariables
+    cssVar: state => CssVariables,
+    sidebarOpened: state => state.app.sidebarOpened
   },
   mutations: {
 
@@ -17,6 +19,7 @@ export default createStore({
   actions: {
   },
   modules: {
-    user
+    user,
+    app
   }
 })

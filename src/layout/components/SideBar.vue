@@ -1,6 +1,15 @@
 <template>
   <div class="side-bar" :style="{background:CssVariables.menuBg }">
-    <h1>sidebar</h1>
+    <div class="logo-container">
+      <el-avatar
+        :size="44"
+        shape="square"
+        src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
+      />
+      <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
+       imooc-admin
+      </h1>
+    </div>
     <el-scrollbar>
       <side-bar-menu></side-bar-menu>
     </el-scrollbar>
@@ -10,7 +19,6 @@
 import {} from 'vue'
 import CssVariables from '../../assets/style/index.styl'
 import SideBarMenu from './side-bar/SideBarMenu.vue'
-// console.log(CssVariables)
 </script>
 
 <style lang="stylus" scoped>
@@ -18,6 +26,21 @@ import SideBarMenu from './side-bar/SideBarMenu.vue'
   transition: width 0.28s;
   z-index: 1001;
   overflow: hidden;
+
+  .logo-container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo-title {
+      margin-left: 10px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      white-space: nowrap;
+    }
+  }
 
   // 重置 element-plus 的css
   .horizontal-collapse-transition {

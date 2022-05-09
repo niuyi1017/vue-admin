@@ -3,6 +3,7 @@
     <side-bar
       id="guide-sidebar"
       class="sidebar-container"
+      :class="$store.getters.sidebarOpened ? 'openSideBar': 'hideSideBar'"
     />
     <div class="main-container">
       <div class="fixed-header">
@@ -30,6 +31,9 @@ import AppMain from './components/AppMain'
 }
 .sidebar-container{
   width: $sideBarWidth !important;
+}
+.hideSideBar{
+  width: $hideSideBarWidth !important
 }
 .main-container{
   flex: 1

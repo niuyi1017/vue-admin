@@ -13,7 +13,25 @@ const isTokenTimeout = () => {
   const timeStamp = getTimeStamp()
   return (currentTimeStamp - timeStamp) > TOKEN_TIMEOUT_VALUR
 }
+
+const isString = function(arg) {
+  return typeof (arg) === 'string'
+}
+const isObject = function(arg) {
+  return typeof (arg) === 'object' && arg !== null
+}
+const isNull = function(arg) {
+  return arg === null
+}
+const isNullOrUndefined = function(arg) {
+  return arg == null
+}
 export {
   setTimeStamp,
-  isTokenTimeout
+  isTokenTimeout,
+  isString,
+  isObject,
+  isNull,
+  isNullOrUndefined
+
 }
