@@ -13,7 +13,7 @@ import {} from 'vue'
   min-height: calc(100vh - 50px);
   position: relative;
   overflow: hidden;
-  padding: 61px 20px 20px 20px;
+  padding: 20px;
   box-sizing: border-box;
   background: #ddd
 }

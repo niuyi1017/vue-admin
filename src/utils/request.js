@@ -10,7 +10,7 @@ const servece = axios.create({
 
 // 请求拦截器
 servece.interceptors.request.use(config => {
-  config.headers.icode = 'A19E62F511F7BB81'
+  config.headers.icode = '5CC3D72BD0904D05'
   if (store.getters.token) {
     if (isTokenTimeout()) {
       store.dispatch('user/logout')
